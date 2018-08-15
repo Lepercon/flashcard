@@ -1,14 +1,22 @@
 Rails.application.routes.draw do
-  get 'answers/text:string'
-  get 'answers/correct:boolean'
+  
+#  get 'answers/index'
+#  get 'answers/show'
+#  get 'answers/new'
+#  get 'answers/edit'
+#  get 'answers/create'
+#  get 'answers/update'
+#  get 'answers/destroy'
+	resources :answers
 	resources :questions
-  get 'questions/index'
-  get 'questions/show'
-  get 'questions/new'
-  get 'questions/edit'
-  get 'questions/create'
-  get 'questions/update'
-  get 'questions/destroy'
+#  get 'questions/index'
+#  get 'questions/show'
+#  get 'questions/new'
+#  get 'questions/edit'
+#  get 'questions/update'
+#  get 'questions/create'
+#  get 'questions/destroy'
+
   get 'static_pages/home'
   get 'static_pages/help'
 

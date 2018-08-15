@@ -1,43 +1,43 @@
 require 'test_helper'
 
-class QuestionsControllerTest < ActionDispatch::IntegrationTest
+class AnswersControllerTest < ActionDispatch::IntegrationTest
 =begin  test "should get index" do
-    get questions_index_url
+    get answers_index_url
     assert_response :success
   end
 
   test "should get show" do
-    get questions_show_url
+    get answers_show_url
     assert_response :success
   end
 
   test "should get new" do
-    get questions_new_url
+    get answers_new_url
     assert_response :success
   end
 
   test "should get edit" do
-    get questions_edit_url
+    get answers_edit_url
     assert_response :success
   end
 
   test "should get create" do
-    get questions_create_url
+    get answers_create_url
     assert_response :success
   end
 
   test "should get update" do
-    get questions_update_url
+    get answers_update_url
     assert_response :success
   end
 
   test "should get destroy" do
-    get questions_destroy_url
+    get answers_destroy_url
     assert_response :success
-  end 
+  end
 =end
-  test "should get index home" do
-    get questions_path
+test "should get index answers" do
+    get answers_path
     assert_response :success
   end
 
