@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Question.create!(text: "What is my name?")
+Question.create!(text: "What is my age?")
+Question.create!(text: "What is my height?")
+
+
+

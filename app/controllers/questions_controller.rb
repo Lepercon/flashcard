@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   def index
-    render html: "You made it"
+      @question = Question.order("RANDOM()").first
   end
 
   def show
@@ -19,5 +19,11 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
+  end
+  
+  private
+
+  def question_params
+    params.permit(:id, :text)
   end
 end

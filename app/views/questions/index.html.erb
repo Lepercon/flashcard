@@ -1,2 +1,6 @@
-<h1>Questions#index</h1>
-<p>Find me in app/views/questions/index.html.erb</p>
+<h1>Cyber sec quiz</h1>
+<%= Question.order("RANDOM()").first.text %>
+<br><br>
+<%= @question.text %>
+
+<%= link_to 'Home', static_pages_home_path %>
