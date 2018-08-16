@@ -1,3 +1,4 @@
-<%= "Incorrect, noob" %><br>
-	<%= link_to "Try again!", questions_show_path(@answer.question_id) %>
-	
+<div class="center jumbotron">
+	<p><%= "Incorrect, noob" %></p><br>
+	<%= link_to "Try again!", questions_show_path(@answer.question_id),  class: "btn btn-lg btn-primary" %>
+</div>	
