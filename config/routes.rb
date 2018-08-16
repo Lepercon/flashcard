@@ -27,10 +27,6 @@ end
 
 
 
-#IGNORE: FROM QUESTIONS INDEX VIEW
-#<%= quest = Question.order("RANDOM()").limit(1) %>
-#<% @questions.each do |quest| %>
-#	<%= quest.text %>
-#<% end %> 
+
 
 
