@@ -5,6 +5,8 @@
 <% if @answer.correct? %>
 	<%= "You answered correctly" %>
 <% else %>
-	<%= "Incorrect" %>
-	
+	<%= "Incorrect" %><br>
+	<%= link_to "Try again!", questions_path%>
 <% end %>
+<br>
+<%= @answer.question_id %>
