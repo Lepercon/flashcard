@@ -1,7 +1,6 @@
 <h1>Cyber sec quiz</h1>
 
-<% matches = request.original_url.scan(/\d*$/).first.to_i %>
-<% @question = Question.find(matches) %> 
+
 <%= @question.text %><br><br>
 <% @question.answers.each do |ans| %>
 	<%= form_for :given_answer, url: question_path(@question), method: :patch do |form| %>	

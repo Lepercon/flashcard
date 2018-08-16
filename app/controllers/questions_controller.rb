@@ -4,7 +4,8 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    
+    matches = request.original_url.scan(/\d*$/).first.to_i
+    @question = Question.find(matches)
   end
 
   def new
