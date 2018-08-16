@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  def index
+  def index 
       @question = Question.order("RANDOM()").first
   end
 
@@ -17,7 +17,11 @@ class QuestionsController < ApplicationController
   end
 
   def update
-
+    if answer_correct?
+      render template: 'static_pages/correct'
+    else
+      render template: 'static_pages/incorrect'
+    end
   end
 
   def destroy
@@ -25,7 +29,20 @@ class QuestionsController < ApplicationController
   
   private
 
-  def question_params
-    params.permit(:id, :text)
+  def given_answer_params
+    return {} if params[:given_answer].blank?
+    params.require(:given_answer).permit!
+  end
+
+  def answer_correct? 
+    return false unless find_answer
+    @answer.correct?
+
+  end
+
+  def find_answer
+    @answer = Answer.find(given_answer_params[:answer_id])
   end
 end
+  
+
