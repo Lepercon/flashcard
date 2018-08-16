@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 	resources :answers
 	resources :questions
 #  get 'questions/index'
-#  get 'questions/show'
+  patch 'questions/show'
 #  get 'questions/new'
 #  get 'questions/edit'
 #  get 'questions/update'

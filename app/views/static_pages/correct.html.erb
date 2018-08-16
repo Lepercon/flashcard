@@ -4,9 +4,9 @@
 <br>
 <% if @answer.correct? %>
 	<%= "You answered correctly" %>
+	<%= link_to "Next question", questions_path %>
 <% else %>
 	<%= "Incorrect" %><br>
-	<%= link_to "Try again!", questions_path%>
+	<%= link_to "Try again!", questions_show_path(@answer.question_id) %>
 <% end %>
 <br>
-<%= @answer.question_id %>

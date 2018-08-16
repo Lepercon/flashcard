@@ -1,34 +1,18 @@
 <h1>Cyber sec quiz</h1>
 
 <%= @question.text %>
-<br>
+<br><br>
 
-
-<% @question.answers.each do |ans| %>
-	<p><%= ans.answertext %></p>
-<% end %>
-
-<p> NEW TEST </p>
-
-
-<% @question.answers.each do |ans| %>
-	<%= form_with(model: @question, local: true) do |form| %>
-		<div class="actions">
-			<%= form.submit ans.answertext %>
-		</div>
-	<% end %>
-<% end %>
-
-<p> NEW TEST 2 </p>
 
 <% @question.answers.each do |ans| %>
 	<%= form_with(model: @question, local: true, url: static_pages_correct_path(ans)) do |form| %>
 		
 			<div class="actions">
 				<%= form.submit ans.answertext %>
-			</div>
+			</div><br>
 	<% end %>
 <% end %>
+
 
 
 <br>

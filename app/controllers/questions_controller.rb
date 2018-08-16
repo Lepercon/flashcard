@@ -4,6 +4,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    
   end
 
   def new
@@ -16,7 +17,7 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    
+
   end
 
   def destroy

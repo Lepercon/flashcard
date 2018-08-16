@@ -1,2 +1,15 @@
-<h1>Questions#show</h1>
-<p>Find me in app/views/questions/show.html.erb</p>
+<h1>Cyber sec quiz</h1>
+
+<% matches = request.original_url.scan(/\d*$/).first.to_i %>
+<% @question = Question.find(matches) %> 
+<%= @question.text %><br><br>
+<% @question.answers.each do |ans| %>
+	<%= form_with(model: @question, local: true, url: static_pages_correct_path(ans)) do |form| %>
+		
+			<div class="actions">
+				<%= form.submit ans.answertext %>
+			</div><br>
+	<% end %>
+<% end %>
+
+<%= link_to "Home", static_pages_home_path %>
