@@ -4,6 +4,7 @@ class StaticPagesController < ApplicationController
   def help
   end
   def correct
+  	
   end
   def incorrect
   end
