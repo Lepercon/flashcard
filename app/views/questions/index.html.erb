@@ -8,7 +8,7 @@
 		
 			<div class="actions">
 				<%= form.hidden_field :answer_id, as: :hidden, value: ans.id %>
-				<%= form.submit ans.answertext %>
+				<%= form.submit ans.answertext, class: "btn btn-lg btn-primary" %>
 			</div><br>
 	<% end %>
 <% end %>
