@@ -1,0 +1,10 @@
+<p> You're genius </p>
+
+<%= @answer.answertext %>
+<br>
+<% if @answer.correct? %>
+	<%= "You answered correctly" %>
+<% else %>
+	<%= "Incorrect" %>
+	
+<% end %>

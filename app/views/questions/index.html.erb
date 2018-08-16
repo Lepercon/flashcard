@@ -21,5 +21,15 @@
 
 <p> NEW TEST 2 </p>
 
+<% @question.answers.each do |ans| %>
+	<%= form_with(model: @question, local: true, url: static_pages_correct_path(ans)) do |form| %>
+		
+			<div class="actions">
+				<%= form.submit ans.answertext %>
+			</div>
+	<% end %>
+<% end %>
+
+
 <br>
 <%= link_to 'Home', static_pages_home_path %>
