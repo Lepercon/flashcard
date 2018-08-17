@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
-  def index 
-      @question = Question.order("RANDOM()").first
+  def index
+    @question = Question.order("RANDOM()").first
   end
 
   def show
@@ -27,7 +27,7 @@ class QuestionsController < ApplicationController
 
   def destroy
   end
-  
+
   private
 
   def given_answer_params
@@ -35,7 +35,7 @@ class QuestionsController < ApplicationController
     params.require(:given_answer).permit!
   end
 
-  def answer_correct? 
+  def answer_correct?
     return false unless find_answer
     @answer.correct?
 
@@ -45,5 +45,3 @@ class QuestionsController < ApplicationController
     @answer = Answer.find(given_answer_params[:answer_id])
   end
 end
-  
-

@@ -1,21 +1,28 @@
 <% provide(:title, 'Quiz') %>
-<div class="center jumbotron">
-	
-	<h1><%= @question.text %></h1>
-	<br><br>
+
+<%- if @question %>
+	<div class="center jumbotron">
+
+		<h1><%= @question.text %></h1>
+		<br><br>
 
 
-	<% @question.answers.each do |ans| %>
-		<%= form_for :given_answer, url: question_path(@question), method: :patch do |form| %>
-		
-				<div class="actions">
-					<%= form.hidden_field :answer_id, as: :hidden, value: ans.id %>
-					<%= form.submit ans.answertext, class: "btn btn-lg btn-primary" %>
-				</div><br>
+		<% @question.answers.each do |ans| %>
+			<%= form_for :given_answer, url: question_path(@question), method: :patch do |form| %>
+
+					<div class="actions">
+						<%= form.hidden_field :answer_id, as: :hidden, value: ans.id %>
+						<%= form.submit ans.answertext, class: "btn btn-lg btn-primary" %>
+					</div><br>
+			<% end %>
 		<% end %>
-	<% end %>
 
 
-	<br><br>
-	<p> If you've clicked next question and the same question appears, refresh the page, we're working on it!</p>
-</div>
+		<br><br>
+		<p> If you've clicked next question and the same question appears, refresh the page, we're working on it!</p>
+	</div>
+<% else %>
+	<h1> NOOOOO QUESTIONS! :( </h1>
+
+
+<% end %>
