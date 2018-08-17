@@ -11,8 +11,9 @@ body {
 	padding-top: 60px;
 }
 
-btn {
+.btn-primary {
 	white-space: normal;
+	width: 800px;
 }
 
 section {
@@ -59,6 +60,7 @@ p {
 
 /* HEADER */
 
+
 #logo {
 	float: left;
 	margin-right: 10px;
@@ -79,6 +81,8 @@ p {
 footer {
 	margin-top: 45px;
 	padding-top: 5px;
+	padding-right: 10px;
+	padding-left: 10px;
 	border-top: 1px solid $gray-medium-light;
 	color: $gray-light;
 	a {
@@ -96,7 +100,7 @@ footer {
 		float: right;
 		list-style: none;
 		li {
-			float: left;
+			float: right;
 			margin-left: 15px;
 		}
 	}
