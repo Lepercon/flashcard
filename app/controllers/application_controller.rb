@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-	def home
-		render html: "Your website is grand"
-	end
+	protect_from_forgery with: :exception
+	include SessionsHelper
 end
