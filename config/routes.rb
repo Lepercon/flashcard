@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  post 'quiz_answers/create'
+  get 'quizzes/show'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

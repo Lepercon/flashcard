@@ -1,0 +1,27 @@
+<% provide(:title, 'Quiz') %>
+
+<%- if @question %>
+	<div class="center jumbotron">
+
+		<h1><%= @question.text %></h1>
+		<br><br>
+
+
+		<% @question.answers.each do |ans| %>
+			<%= form_for :given_answer, url: quiz_answers_create_path(@question), method: :post do |form| %>
+
+					<div class="actions">
+						<%= form.hidden_field :answer_id, as: :hidden, value: ans.id %>
+						<%= form.submit ans.answertext, class: "btn btn-lg btn-primary" %>
+					</div><br>
+			<% end %>
+		<% end %>
+
+
+		<br><br>
+		<p> If you've clicked next question and the same question appears, refresh the page, we're working on it!</p>
+	</div>
+<% else %>
+	<h1> We haven't got any questions yet, they're coming soon!</h1>
+
+<% end %>
