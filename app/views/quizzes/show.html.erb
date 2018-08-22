@@ -1,21 +1,25 @@
 <% provide(:title, 'Quiz') %>
 
-	<div class="center jumbotron">
+  <div class="center jumbotron">
+    <%- if logged_in? %>
+      <h1><%= @question.text %></h1>
+      <br><br>
 
-		<h1><%= @question.text %></h1>
-		<br><br>
+      <% @question.answers.each do |ans| %>
+        <%= form_for :given_answer, url: quiz_answers_path(@question), method: :post do |form| %>
 
-		<% @question.answers.each do |ans| %>
-			<%= form_for :given_answer, url: quiz_answers_path(@question), method: :post do |form| %>
+          <div class="actions">
+            <%= form.hidden_field :answer_id, as: :hidden, value: ans.id %>
+            <%= form.submit ans.answertext, class: "btn btn-lg btn-primary" %>
+          </div><br>
+        <% end %>
+      <% end %>
 
-					<div class="actions">
-						<%= form.hidden_field :answer_id, as: :hidden, value: ans.id %>
-						<%= form.submit ans.answertext, class: "btn btn-lg btn-primary" %>
-					</div><br>
-			<% end %>
-		<% end %>
-
-
-		<br><br>
-		<p> If you've clicked next question and the same question appears, refresh the page, we're working on it!</p>
-	</div>
+      <br><br>
+      <p> If you've clicked next question and the same question appears, refresh the page, we're working on it!</p>
+    <% else %> 
+      <p> You must be logged in to access the quiz! </p>
+      <%= link_to 'Sign up now to start quizzing!', signup_path, class: "btn btn-lg btn-primary" %><br><br><br>
+      <%= link_to "Log in", login_path, class: "btn btn-lg btn-primary" %>
+    <% end %>
+  </div>
