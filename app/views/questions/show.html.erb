@@ -1,14 +1,14 @@
 <% provide(:title, 'Quiz') %>
 <div class="center jumbotron">
-	<h1><%= @question.text %></h1>
-	<br><br>
-	<% @question.answers.each do |ans| %>
-		<%= form_for :given_answer, url: question_path(@question), method: :patch do |form| %>	
-				<div class="actions">
-					<%= form.hidden_field :answer_id, as: :hidden, value: ans.id %>
-					<%= form.submit ans.answertext, class: "btn btn-lg btn-primary" %>
-				</div><br>
-		<% end %>
-	<% end %>
+  <h1><%= @question.text %></h1>
+  <br><br>
+  <% @question.answers.each do |ans| %>
+  <%= form_for :given_answer, url: question_path(@question), method: :patch do |form| %>  
+  <div class="actions">
+    <%= form.hidden_field :answer_id, as: :hidden, value: ans.id %>
+    <%= form.submit ans.answertext, class: "btn btn-lg btn-primary" %>
+  </div><br>
+  <% end %>
+  <% end %>
 
 </div>

@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
   
   end
   def correct
-  	if answer_correct?
+    if answer_correct?
       render template: 'static_pages/correct'
     else
       render template: 'static_pages/incorrect'
