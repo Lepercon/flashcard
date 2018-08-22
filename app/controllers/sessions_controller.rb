@@ -7,10 +7,11 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       log_in @user
       if params[:session][:remember_me] == '1'
-        flash[:danger] = "This if clause is running DELETE ME" 
+        flash[:warning] = "You have ticked the 'Remember me' option. This
+                            means that you will not be logged out upon
+                             closing your browser window" 
         remember(@user) 
       else
-        flash[:danger] = "This else clause is running DELETE ME"
         forget(@user)
       end
       redirect_to @user
