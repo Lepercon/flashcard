@@ -67,7 +67,7 @@ Answer.create!(answertext: "A type of software that analyses information collect
 Answer.create!(answertext: "A method of unloading a large number of exploit attempts on a target", 
 	correct: true, question_id: question_6.id)
 Answer.create!(answertext: "Using a computational power to automatically enter a huge number of combination of values, usually in order to discover passwords and gain access", 
-	correct: false, question_id: question_6.id)
+	correct: true, question_id: question_6.id)
 Answer.create!(answertext: "Physically accessing a computer by force to attack it", 
 	correct: false, question_id: question_6.id)
 
@@ -140,10 +140,10 @@ Answer.create!(answertext: "Untargeted, mass emails sent to many people asking f
 question_12 = Question.create!(text: "What is whaling?")
 
 Answer.create!(answertext: "Highly targeted phishing attacks (masquerading as a legitimate emails) that are aimed at senior executives", 
-	correct: false, question_id: question_12.id)
+	correct: true, question_id: question_12.id)
 Answer.create!(answertext: "Untargeted, mass emails sent to many people asking for sensitive information (such as bank details) or encouraging them to visit a fake website", 
 	correct: false, question_id: question_12.id)
 Answer.create!(answertext: "Using malware to create a breach of data", 
 	correct: false, question_id: question_12.id)
 Answer.create!(answertext: "When attackers try to take down any of the largest websites on the internet", 
-	correct: true, question_id: question_12.id)
+	correct: false, question_id: question_12.id)

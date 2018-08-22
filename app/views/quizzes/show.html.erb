@@ -6,7 +6,7 @@
 		<br><br>
 
 		<% @question.answers.each do |ans| %>
-			<%= form_for :given_answer, url: quiz_answers_create_path(@question), method: :post do |form| %>
+			<%= form_for :given_answer, url: quiz_answers_path(@question), method: :post do |form| %>
 
 					<div class="actions">
 						<%= form.hidden_field :answer_id, as: :hidden, value: ans.id %>

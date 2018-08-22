@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   
-  post 'quiz_answers/create'
-  get 'quizzes/show'
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
@@ -11,14 +10,18 @@ Rails.application.routes.draw do
 
 	resources :answers
 	resources :questions
+  resources :quizzes, only: :show do
+    collection do
+      get :random
+    end
+  end
+  resources :quiz_answers, only: :create
 
-  patch 'questions/show'
 
+  resources :static_pages, only: :show
+  #get 'static_pages/home'
+  #get 'static_pages/help'
 
-  get 'static_pages/home'
-  get 'static_pages/help'
-  patch 'static_pages/correct'
-  get 'static_pages/correct'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'static_pages#home'
