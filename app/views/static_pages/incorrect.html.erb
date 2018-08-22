@@ -1,5 +1,5 @@
 <% provide(:title, 'Quiz') %>
 <div class="center jumbotron">
 	<p><%= "Incorrect, noob" %></p><br>
-	<%= link_to "Try again!", questions_show_path(@answer.question_id),  class: "btn btn-lg btn-primary" %>
-</div>	
+	<%= link_to "Try again!", quizzes_show_path(@question),  class: "btn btn-lg btn-primary" %>
+</div>

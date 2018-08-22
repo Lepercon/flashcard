@@ -1,5 +1,9 @@
 class QuizzesController < ApplicationController
   def show
-  	@question = Question.order("RANDOM()").first
+    if params[:format].present?
+      @question = Question.find(params[:format])
+    else
+      @question ||= Question.order("RANDOM()").first
+    end
   end
 end
