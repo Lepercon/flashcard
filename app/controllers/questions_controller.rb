@@ -1,14 +1,14 @@
 class QuestionsController < ApplicationController
   def index
-    @question = Question.order("RANDOM()").first
+    @questions = Question.all
   end
 
   def show
-    matches = request.original_url.scan(/\d*$/).first.to_i
-    @question = Question.find(matches)
+    @question = Question.find(params[:id])
   end
 
   def new
+    @question = Question.new
   end
 
   def edit

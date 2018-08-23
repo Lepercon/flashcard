@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+user = User.create!(name: "example", email: "example@railstutorial.com", password: "example", password_confirmation: "example")
+
 question_1 = Question.create!(text: "What is OSINT?")
 
 Answer.create!(answertext: "Original Source Intelligence", 
@@ -64,10 +66,10 @@ question_6 = Question.create!(text: "What is a brute force attack?")
 
 Answer.create!(answertext: "A type of software that analyses information collected on a target to develop passwords that they may potentially use", 
 	correct: false, question_id: question_6.id)
-Answer.create!(answertext: "A method of unloading a large number of exploit attempts on a target", 
+Answer.create!(answertext: "A method of unloading a large number of exploit attempts on a target in the hope that one works", 
 	correct: true, question_id: question_6.id)
-Answer.create!(answertext: "Using a computational power to automatically enter a huge number of combination of values, usually in order to discover passwords and gain access", 
-	correct: true, question_id: question_6.id)
+Answer.create!(answertext: "A software which kills all processes in a computer if it gets infected to force the malware to stop", 
+	correct: false, question_id: question_6.id)
 Answer.create!(answertext: "Physically accessing a computer by force to attack it", 
 	correct: false, question_id: question_6.id)
 

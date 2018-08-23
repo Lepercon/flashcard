@@ -1,27 +1,25 @@
-<% provide(:title, 'Quiz') %>
+<% provide(:title, 'All questions') %>
 
-<%- if @question %>
-  <div class="center jumbotron">
+<%- if !@questions.nil? %>
+  <h1> Questions </h1>
 
-    <h1><%= @question.text %></h1>
-    <br><br>
+  <%- if !logged_in? %>
+    <p>You must be logged in to access the questions.</p>
+    <%= link_to 'Sign up now to start quizzing!', signup_path, class: "btn btn-lg btn-primary" %><br><br><br>
+    <%= link_to "Log in", login_path, class: "btn btn-lg btn-primary" %>
+    <p><%= q.text %></p>
+  <% end %>
 
+  <%- @questions.each do |q| %>
+    <p><%= link_to "#{q.text}", question_path(q.id) if logged_in? %></p>
+  <% end %>
+    
 
-    <% @question.answers.each do |ans| %>
-      <%= form_for :given_answer, url: question_path(@question), method: :patch do |form| %>
-
-          <div class="actions">
-            <%= form.hidden_field :answer_id, as: :hidden, value: ans.id %>
-            <%= form.submit ans.answertext, class: "btn btn-lg btn-primary" %>
-          </div><br>
-      <% end %>
-    <% end %>
-
-
-    <br><br>
-    <p> If you've clicked next question and the same question appears, refresh the page, we're working on it!</p>
-  </div>
 <% else %>
   <h1> We haven't got any questions yet, they're coming soon!</h1>
 
 <% end %>
+
+<%= link_to "New question", new_question_path if current_user.is_admin? %>
+
+
