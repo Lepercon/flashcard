@@ -1,3 +1,35 @@
+<% provide(:title, 'Edit User') %>
 
-<p> you've reached editing pAge</p>
-<%= params.inspect %>
+<%- if (@user == current_user) || (!current_user.nil? && current_user.is_admin?) %>
+  <h1>Edit user: <%= @user.name %></h1>
+  <br>
+
+  
+  <div class="row", align="center">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_for(@user, url: user_path(@user.id), method: :patch) do |f| %>
+        <%= render 'shared/error_messages' %>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control' %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
+
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+        <%= f.submit "Update this user", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+
+
+  <%= link_to "Back to my profile", user_path(@user) if @user == current_user %>
+  <%= link_to "This user's profile", user_path(@user) if (current_user.is_admin? && (!(@user == current_user))) %><br>
+  <%= link_to "Back to all users", users_path if current_user.is_admin? %>
+<% else %>
+  <h1>You must be logged in as an admin user to view this page</h1>
+<% end %>
