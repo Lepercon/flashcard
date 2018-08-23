@@ -28,21 +28,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+      @user = User.find(params[:id])
     respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully 
-                                                  updated.' }
-      else
-        format.html { render :edit }
-      end
-
-      if @user.update_attribute(:name, params[:user][:name])
-        format.html { redirect_to @user, notice: 'Name was successfully 
-                                                  updated.' }
-      else
-        format.html { render :edit }
-      end
+        if @user.update(user_params)
+          format.html { redirect_to @user, notice: 'User was successfully 
+                                                    updated.' }
+        else
+          format.html { render :edit }
+        end
     end
   end
 

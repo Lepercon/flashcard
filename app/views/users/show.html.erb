@@ -13,7 +13,7 @@
   </div>
   <%= link_to "Edit my profile", edit_user_path(@user) if @user ==current_user %><br>
   <%= link_to "Edit this user", edit_user_path(@user) if (current_user.is_admin? && (!(@user == current_user))) %><br>
-  <%= link_to "Back to all users", users_path if current_user.is_admin? %>
+  <%= link_to "All users", users_path if current_user.is_admin? %>
 <% else %>
   <h1>You must be logged in as an admin user to view this page</h1>
 <% end %>
