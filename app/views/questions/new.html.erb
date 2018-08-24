@@ -6,7 +6,11 @@
     <%= form_for(@question, url: questions_path) do |f| %>
       <%= f.label :text %>
       <%= f.text_field :text, class: 'form-control' %>
-      <%= f.submit "Add question", class: "btn btn-primary" %>
+
+      <%= f.label :answer %>
+      <%= f.text_field :answers, class: 'form-control' %>
+
+      <%= f.submit "Add question", class: "btn btn-primary" %>      
     <% end %>
   </div>
-</div>
+</div>  
