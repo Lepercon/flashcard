@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   def index
     @questions = Question.all
-  end
+  end 
 
   def show
     @question = Question.find(params[:id])
@@ -9,6 +9,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    @question.answers.build
   end
 
   def edit
@@ -25,11 +26,7 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    if answer_correct?
-      render template: 'static_pages/correct'
-    else
-      render template: 'static_pages/incorrect'
-    end
+
   end
 
   def destroy
@@ -53,6 +50,7 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:text)
+    params.require(:question).permit(:text, answers_attributes: [:id, 
+                                      :answertext])
   end
 end
