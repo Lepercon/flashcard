@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   def index
     @questions = Question.all
-  end
+  end 
 
   def show
     @question = Question.find(params[:id])
@@ -9,6 +9,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    @question.answers.build
   end
 
   def edit
@@ -20,19 +21,21 @@ class QuestionsController < ApplicationController
       flash[:success] = "Your question has been added!"
       redirect_to root_path
     else
-      render 'new'
+      redirect_to new_question_path
     end
   end
 
   def update
-    if answer_correct?
-      render template: 'static_pages/correct'
-    else
-      render template: 'static_pages/incorrect'
-    end
+
   end
 
   def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
+    respond_to do |format|
+      format.html { redirect_to questions_path}
+      flash[:success] = "Question deleted"
+    end
   end
 
   private
@@ -53,6 +56,7 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:text)
+    params.require(:question).permit(:text, answers_attributes: [:id, 
+                                      :answertext])
   end
 end
