@@ -21,7 +21,7 @@ class QuestionsController < ApplicationController
       flash[:success] = "Your question has been added!"
       redirect_to root_path
     else
-      redirect_to new_question_path
+      render 'new'
     end
   end
 
