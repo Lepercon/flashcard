@@ -5,7 +5,11 @@ class QuizzesController < ApplicationController
 
   def random
     @question ||= Question.order("RANDOM()").first
-
-    render :show
+    if !@question.answers.blank?
+      render :show
+    else
+      flash[:warning] = "You skipped a question with no answers"
+      redirect_to random_quizzes_path
+    end
   end
 end
