@@ -18,13 +18,18 @@
   
   <br><br>
   
-  <% @question.answers.each do |ans| %>
-    <%= form_for :given_answer, url: quiz_answers_path(@question), method: :post do |form| %>  
-      <div class="actions">
-        <%= form.hidden_field :answer_id, as: :hidden, value: ans.id %>
-        <%= form.submit ans.answertext, class: "btn btn-lg btn-primary" %>
-      </div><br>
+  <%- if !@question.answers.blank? %>
+    <% @question.answers.each do |ans| %>
+      <%= form_for :given_answer, url: quiz_answers_path(@question), method: :post do |form| %>  
+        <div class="actions">
+          <%= form.hidden_field :answer_id, as: :hidden, value: ans.id %>
+          <%= form.submit ans.answertext, class: "btn btn-lg btn-primary" %>
+        </div><br>
+      <% end %>
     <% end %>
+  <% else %>
+    <p>This question has no answers yet, they will be added soon!</p>
+    <%= link_to "Add answers", '#' if current_user.is_admin? %><br>
   <% end %>
   
   <%= link_to "All questions", questions_path %>

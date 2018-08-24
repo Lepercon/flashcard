@@ -5,15 +5,23 @@
       <h1><%= @question.text %></h1>
       <br><br>
 
-      <% @question.answers.each do |ans| %>
-        <%= form_for :given_answer, url: quiz_answers_path(@question), method: :post do |form| %>
 
-          <div class="actions">
-            <%= form.hidden_field :answer_id, as: :hidden, value: ans.id %>
-            <%= form.submit ans.answertext, class: "btn btn-lg btn-primary" %>
-          </div><br>
+      <%- if !@question.answers.blank? %>
+        <% @question.answers.each do |ans| %>
+          <%= form_for :given_answer, url: quiz_answers_path(@question), method: :post do |form| %>
+
+            <div class="actions">
+              <%= form.hidden_field :answer_id, as: :hidden, value: ans.id %>
+              <%= form.submit ans.answertext, class: "btn btn-lg btn-primary" %>
+            </div><br>
+          <% end %>
         <% end %>
+      <% else %>
+        <p>This question has no answers yet, they will be added soon!</p>
+        <%= link_to "Next question", random_quizzes_path %>
       <% end %>
+
+
 
       <br><br>
       <p> If you've clicked next question and the same question appears, refresh the page, we're working on it!</p>

@@ -15,6 +15,13 @@ class QuestionsController < ApplicationController
   end
 
   def create
+    @question = Question.new(question_params)
+    if @question.save
+      flash[:success] = "Your question has been added!"
+      redirect_to root_path
+    else
+      render 'new'
+    end
   end
 
   def update
@@ -43,5 +50,9 @@ class QuestionsController < ApplicationController
 
   def find_answer
     @answer = Answer.find(given_answer_params[:answer_id])
+  end
+
+  def question_params
+    params.require(:question).permit(:text)
   end
 end
