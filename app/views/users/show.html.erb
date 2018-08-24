@@ -1,5 +1,18 @@
 <% provide(:title, @user.name) %>
 
+<%- if @user == current_user %>
+  <div class="box">
+    <div class="correct_counter">
+      <p> Correct answers: <%= @user.correct_answers_given %> </p>
+    </div>
+  </div>
+  <div class="box">
+    <div class="incorrect_counter">
+      <p> Incorrect answers: <%= @user.incorrect_answers_given %> </p>
+    </div>
+  </div>
+<% end %>
+
 <%- if (@user == current_user) || (!current_user.nil? && current_user.is_admin?) %>
   <div class="row">
     <aside class="col-md-4">
@@ -17,5 +30,3 @@
 <% else %>
   <h1>You must be logged in as an admin user to view this page</h1>
 <% end %>
-
-

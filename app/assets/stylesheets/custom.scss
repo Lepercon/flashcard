@@ -16,7 +16,7 @@ $base-margin: 20px;
 
 /* UNIVERSAL */
 body {
-  padding-top: 15%;
+  padding-top: 20%;
 }
 
 .btn-lg {
@@ -69,11 +69,42 @@ p {
   font-size: 100%;
   line-height: 110%;
   text-align: center;
-  padding-left: 5%;
-  padding-right: 5%;
-  padding-bottom: 2%;
   padding: 0 5% 2%;
 
+}
+
+div.correct_counter {
+  p {
+    text-align: center;
+    margin-bottom: -1%;
+  }
+}
+
+div.incorrect_counter {
+  p {
+    margin-bottom: -1%;
+    text-align: center;
+  }
+}
+
+.box div.correct_counter {
+
+  position: absolute;
+  right: 2%;
+  width: 37%;
+  border-radius: 5%;
+  background-color: #7CFC00;
+
+}
+
+.box div.incorrect_counter {
+
+  margin-top: 10%;
+  position: absolute;
+  right: 2%;
+  width: 37%;
+  border-radius: 5%;
+  background-color: #FF0000;
 }
 
 /* HEADER */
@@ -236,11 +267,20 @@ input {
 @media screen and (min-width: 400px) {
 
   body {
-    padding-top: 12%;
+    padding-top: 15%;
   }
 
   h1 {
     font-size: 200%;
+  }
+
+  .box div.correct_counter {
+    width: 36%;
+  }
+
+  .box div.incorrect_counter {
+    margin-top: 5%;
+    width: 36%;
   }
 
   #logo {
@@ -256,10 +296,21 @@ input {
   }
 }
 
+@media screen and (min-width: 500px) {
+  .box div.correct_counter {
+    width: 30%;
+  }
+
+  .box div.incorrect_counter {
+    margin-top: 4%;
+    width: 30%;
+  }
+}
+
 @media screen and (min-width: 600px) {
 
   body {
-    padding-top: 10%;
+    padding-top: 12%;
   }
 
   h1 {
@@ -274,6 +325,15 @@ input {
     font-size: 100%;
   }
 
+  .box div.correct_counter {
+    width: 25%;
+  }
+
+  .box div.incorrect_counter {
+    width: 25%;
+    margin-top: 3%;
+  }
+
   #logo {
     font-size: 170%;
     margin-top: -17px;
@@ -286,5 +346,45 @@ input {
         margin-left: -2%;
 
     }
+  }
+}
+
+@media screen and (min-width: 800px) {
+
+  body {
+    padding-top: 8%;
+  }
+
+  .box div.correct_counter {
+    width: 20%;
+  }
+
+  .box div.incorrect_counter {
+    width: 20%;
+    margin-top: 3%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+
+  body {
+    padding-top: 6%;
+  }
+
+  .box div.correct_counter {
+    width: 15%;
+  }
+
+  .box div.incorrect_counter {
+    width: 15%;
+    margin-top: 2%;
+  }
+
+}
+
+@media screen and (min-width: 1400px) {
+
+  body {
+    padding-top: 5%;
   }
 }
