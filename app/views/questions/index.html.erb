@@ -7,11 +7,11 @@
     <p>You must be logged in to access the questions.</p>
     <%= link_to 'Sign up now to start quizzing!', signup_path, class: "btn btn-lg btn-primary" %><br><br><br>
     <%= link_to "Log in", login_path, class: "btn btn-lg btn-primary" %>
-    <p><%= q.text %></p>
   <% end %>
 
   <%- @questions.each do |q| %>
     <p><%= link_to "#{q.text}", question_path(q.id) if logged_in? %></p>
+    <p><%= q.text if !logged_in? %></p>
   <% end %>
     
 
@@ -20,6 +20,6 @@
 
 <% end %>
 
-<%= link_to "New question", new_question_path if current_user.is_admin? %>
+<%= link_to "New question", new_question_path if (!current_user.nil? &&current_user.is_admin?) %>
 
 

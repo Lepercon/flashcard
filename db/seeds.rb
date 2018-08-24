@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-user = User.create!(name: "example", email: "example@railstutorial.com", password: "example", password_confirmation: "example")
+user = User.create!(name: "example", email: "example@railstutorial.com", password: "example", password_confirmation: "example", is_admin: true)
 
 question_1 = Question.create!(text: "What is OSINT?")
 
