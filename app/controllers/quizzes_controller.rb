@@ -8,7 +8,8 @@ class QuizzesController < ApplicationController
     if !@question.answers.blank?
       render :show
     else
-      flash[:warning] = "You skipped a question with no answers"
+      flash[:warning] = "You skipped question #{@question.id}, which has 
+                          no answers"
       redirect_to random_quizzes_path
     end
   end
