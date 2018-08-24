@@ -8,9 +8,11 @@
       <%= f.label :text, "Question" %>
       <%= f.text_field :text, class: 'form-control' %>
 
-      <%= f.fields_for :answers do |answer_fields| %>
-        <%= answer_fields.label :answertext, "Answer" %>
-        <%= answer_fields.text_field :answertext, class: 'form-control' %>
+      <% 4.times do %>
+        <%= f.fields_for :answers do |answer_fields| %>
+          <%= answer_fields.label :answertext, "Answer" %>
+          <%= answer_fields.text_field :answertext, class: 'form-control' %>
+        <% end %>
       <% end %>
 
       <%= f.submit "Add question", class: "btn btn-primary" %>      
