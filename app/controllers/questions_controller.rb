@@ -21,7 +21,7 @@ class QuestionsController < ApplicationController
       flash[:success] = "Your question has been added!"
       redirect_to root_path
     else
-      render 'new'
+      redirect_to new_question_path
     end
   end
 
@@ -30,6 +30,12 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
+    respond_to do |format|
+      format.html { redirect_to questions_path}
+      flash[:success] = "Question deleted"
+    end
   end
 
   private
