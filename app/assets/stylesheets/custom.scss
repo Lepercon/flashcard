@@ -122,8 +122,8 @@ div.incorrect_counter {
 #logo {
   position:absolute;
   top: 50%;
-  margin-top:-12px;
-  font-size: 120%;
+  margin-top:-11px;
+  font-size: 110%;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: -0.5%;
@@ -143,8 +143,8 @@ div.incorrect_counter {
   ul.nav {
     li {
         float: right;
-        margin-left: -6%;
-        font-size: 95%;
+        margin-left: -7%;
+        font-size: 90%;
       }
     }
 
@@ -275,6 +275,19 @@ input {
   margin-left: 0;
 }
 
+@media screen and (min-width: 350px) {
+
+  #logo{
+    font-size: 115%;
+    margin-top: -11.5px;
+  }
+  ul.nav {
+    li {
+      font-size: 100%;
+      margin-left: -6%;
+    }
+  }
+}
 
 @media screen and (min-width: 400px) {
 
@@ -296,15 +309,15 @@ input {
   }
 
   #logo {
-    font-size: 150%;
-    margin-top: -15px;
+    font-size: 130%;
+    margin-top: -13px;
   }
 
 
   ul.nav {
     li {
         font-size: 110%;
-        margin-left: -4%
+        margin-left: -3%
         }
       }
 
