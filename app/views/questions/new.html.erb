@@ -13,12 +13,14 @@
         <%= f.fields_for :answers do |answer_fields| %>
           <%= answer_fields.label :answertext, "Answer" %>
           <%= answer_fields.text_field :answertext, class: 'form-control' %>
+
+          <%= answer_fields.label :correct, "Is this a correct answer?" %>
+          <%= answer_fields.check_box :correct, class: 'form-control' %>
         <% end %>
       <% end %>
 
       <%= f.submit "Add question", class: "btn btn-primary" %>      
     <% end %>
   </div>
-  <%= params.inspect %>
 </div>  
 <%= link_to "All questions", questions_path %>
