@@ -16,9 +16,16 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       @user.update(correct_answers_given: 0, incorrect_answers_given: 0)
-      log_in @user
-      flash[:success] = "Welcome to the Cyber Dictionary!"
-      redirect_to @user
+      if logged_in?
+        respond_to do |format|
+          format.html { redirect_to users_path}
+          flash[:success] = "New user created"
+        end
+      else
+        log_in @user
+        flash[:success] = "Welcome to the Cyber Dictionary!"
+        redirect_to @user
+      end
     else
       render 'new'
     end
