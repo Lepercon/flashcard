@@ -16,21 +16,9 @@ class Question < ApplicationRecord
 
   def question_has_only_one_correct_answer
     return if answers.blank?
-    if answers.select{|a| a.correct == true}.count > 1
-      errors.add(:base, "You can only have one correct answer")
+    if answers.select{|a| a.correct == true}.count != 1
+      errors.add(:base, "Each question must have one correct answer")
     end
   end
 
-  # def question_has_one_correct_answer
-  #   return if answers.blank?
-  #   new_question_correct_answer_count = 0
-  #   if answer.correct?
-  #     new_question_correct_answer_count +=1
-  #   end
-
-  #   if new_question_correct_answer_count !=1
-  #     errors.add(:base, "The question must have 1 correct answer")
-  #   end
-
-  #end
 end
