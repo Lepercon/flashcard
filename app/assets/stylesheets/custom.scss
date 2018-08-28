@@ -15,14 +15,23 @@ $base-margin: 20px;
 }
 
 /* UNIVERSAL */
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
 body {
   padding-top: 20%;
+  position:relative;
+  min-height: 100%;
+  padding-bottom: 5%;
 }
 
 .btn-lg {
   white-space: normal;
   width: 80%;
 }
+
 
 section {
   overflow: auto;
@@ -130,19 +139,25 @@ div.incorrect_counter {
    min-width: 80%;
 }
 
-ul {
-  li {
-      float: right;
-      margin-left: -6%;
-      font-size: 95%;
+
+  ul.nav {
+    li {
+        float: right;
+        margin-left: -6%;
+        font-size: 95%;
+      }
     }
-}
+
 
 /* FOOTER */
 
 footer {
-  padding-right: 1%;
-  padding-left: 1%;
+  width: 100%;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  text-align: left;
+  position: absolute;
   border-top: 1px solid $gray-medium-light;
   color: $gray-light;
   a {
@@ -152,16 +167,13 @@ footer {
     }
   }
 
-  small {
-    float: left;
-  }
 
-  ul {
-    float: right;
+  ul.footer {
+    width: 100%;
     list-style: none;
     li {
-      float: right;
-      margin-left: 1%;
+      padding-top: 1vh;
+      width: 100%;
       font-size: 90%;
     }
   }
@@ -288,13 +300,15 @@ input {
     margin-top: -15px;
   }
 
-  ul {
+
+  ul.nav {
     li {
         font-size: 110%;
         margin-left: -4%
-    }
+        }
+      }
+
   }
-}
 
 @media screen and (min-width: 500px) {
   .box div.correct_counter {
@@ -340,14 +354,14 @@ input {
 
   }
 
-  ul {
-    li {
-        font-size: 160%;
-        margin-left: -2%;
 
+  ul.nav {
+    li {
+       font-size: 160%;
+       margin-left: -2%;
+       }
+      }
     }
-  }
-}
 
 @media screen and (min-width: 800px) {
 
@@ -379,7 +393,6 @@ input {
     width: 15%;
     margin-top: 2%;
   }
-
 }
 
 @media screen and (min-width: 1400px) {
@@ -387,4 +400,6 @@ input {
   body {
     padding-top: 5%;
   }
+
+
 }
