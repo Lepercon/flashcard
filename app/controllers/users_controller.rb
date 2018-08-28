@@ -32,13 +32,22 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     respond_to do |format|
         if @user.update(user_params)
-          format.html { redirect_to @user, notice: 'User was successfully 
+          format.html { redirect_to @user, notice: 'User was successfully
                                                     updated.' }
         else
           format.html { render :edit }
         end
     end
   end
+
+  def destroy
+      @user = User.find(params[:id])
+      @user.destroy
+      respond_to do |format|
+        format.html { redirect_to users_path}
+        flash[:success] = "User deleted"
+      end
+    end
 
   private
 
