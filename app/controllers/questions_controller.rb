@@ -9,7 +9,9 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
-    @question.answers.build
+    4.times do
+      @question.answers.build
+    end
   end
 
   def edit
@@ -19,7 +21,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     if @question.save
       flash[:success] = "Your question has been added!"
-      redirect_to root_path
+      redirect_to questions_path
     else
       render 'new'
     end

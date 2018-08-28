@@ -8,16 +8,13 @@
       <%= f.label :text, "Question" %>
       <%= f.text_field :text, class: 'form-control' %>
 
-      
-      <% 4.times do %>
         <%= f.fields_for :answers do |answer_fields| %>
           <%= answer_fields.label :answertext, "Answer" %>
           <%= answer_fields.text_field :answertext, class: 'form-control' %>
 
-          <%= answer_fields.label :correct, "Is this a correct answer?" %>
-          <%= answer_fields.check_box :correct, class: 'form-control' %>
+          <%= answer_fields.label :correct, "Is this answer correct?" %>
+          <%= answer_fields.check_box :correct %>
         <% end %>
-      <% end %>
 
       <%= f.submit "Add question", class: "btn btn-primary" %>      
     <% end %>
