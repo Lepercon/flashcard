@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   def index
     @questions = Question.all
-  end 
+  end
 
   def show
     @question = Question.find(params[:id])
@@ -15,6 +15,7 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    @question = Question.find(params[:id])
   end
 
   def create
@@ -39,7 +40,15 @@ class QuestionsController < ApplicationController
   end
 
   def update
-
+    @question = Question.find(params[:id])
+    respond_to do |format|
+      if @question.update(question_params)
+        format.html { redirect_to @question, notice: 'Question was successfully
+                                                  updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
   end
 
   def destroy
@@ -69,7 +78,7 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:text, answers_attributes: [:id, 
+    params.require(:question).permit(:text, answers_attributes: [:id,
                                       :answertext, :correct])
   end
 end
