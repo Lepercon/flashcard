@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_secure_password(validations: true)
   validates :password, length: { minimum: 6 }, on: :create
   validates :password, length: { minimum: 6 }, allow_blank: true, on: :update
-  # validate :password_min_length, on: :update
+
 
   #Returns hash digest of given string
   def User.digest(string)
@@ -43,10 +43,4 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
-  def password_min_length
-    # if password has changed and the length is less than 6 add error
-    #raise(self.inspect)
-    return false if (self.changed? && self.password.length < 6)
-    errors.add(:base, "Password must be longer than 6 characters") 
-  end
 end
