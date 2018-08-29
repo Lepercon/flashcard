@@ -36,13 +36,10 @@ class UsersController < ApplicationController
   end
 
   def update
-#   @id = request.original_fullpath.scan(/\d*$/).first.to_i
     @user = User.where(id: params[:id]).first
     hash = user_params.reject { |k, v| v.blank?}
-    #raise(hash.inspect)
-    @user.update(hash) #NOT COLLECTING ID???
-    #@user = User.find(params[:id])
-   # raise (@user.inspect)
+    @user.update(hash) 
+
     
 
     respond_to do |format|
