@@ -23,11 +23,17 @@ class QuestionsController < ApplicationController
       flash[:success] = "Your question has been added!"
       redirect_to questions_path
     else
-       # @question.errors.full_messages.each do |msg|
-       #  flash[:warning] = "#{msg}"
-       #  flash.keep
-       # end
-       # redirect_to new_question_path
+      @n = 0
+      @question.answers.each do |ans|
+        if !ans.blank?
+          @n +=1
+        end
+      end
+      if @n != 4
+        (4-@n).times do
+          @question.answers.build
+        end
+      end
       render 'new'
     end
   end
