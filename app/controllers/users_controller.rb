@@ -36,14 +36,22 @@ class UsersController < ApplicationController
   end
 
   def update
-      @user = User.find(params[:id])
+#   @id = request.original_fullpath.scan(/\d*$/).first.to_i
+    @user = User.where(id: params[:id]).first
+    hash = user_params.reject { |k, v| v.blank?}
+    #raise(hash.inspect)
+    @user.update(hash) #NOT COLLECTING ID???
+    #@user = User.find(params[:id])
+   # raise (@user.inspect)
+    
+
     respond_to do |format|
-        if @user.update(user_params)
-          format.html { redirect_to @user, notice: 'User was successfully
-                                                    updated.' }
-        else
-          format.html { render :edit }
-        end
+      if @user.update(user_params)
+        format.html { redirect_to @user, notice: 'User was successfully
+                                                   updated.' }
+      else
+        format.html { render :edit }
+      end
     end
   end
 
@@ -59,7 +67,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password,
+      params.require(:user).permit(:id, :name, :email, :password,
       :password_confirmation)
     end
 
