@@ -11,7 +11,7 @@ class User < ApplicationRecord
 	#Uses Rails built-in to create password digests, and validates passwords
 	has_secure_password(validations: true)
   validates :password, length: { minimum: 6 }, allow_blank: true
-	
+
 	#Returns hash digest of given string
 	def User.digest(string)
 		cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -41,4 +41,3 @@ class User < ApplicationRecord
 		update_attribute(:remember_digest, nil)
 	end
 end
-
