@@ -1,0 +1,26 @@
+<% provide(:title, 'Edit Question') %>
+
+<h1>Edit a question</h1>
+<br>
+<div class="row", align="center">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@question, url: question_path(@question.id), method: :patch) do |f| %>
+      <%= render 'shared/question_error_messages' %>
+      <%= f.label :text, "Question" %>
+      <%= f.text_field :text, class: 'form-control' %>
+
+      <%= f.fields_for :answers do |answer_fields| %>
+        <%= answer_fields.label :answertext, "Answer" %>
+        <%= answer_fields.text_field :answertext, class: 'form-control' %>
+
+        <%= answer_fields.label :correct, "Is this answer correct?" %>
+        <%= answer_fields.check_box :correct %>
+      <% end %>
+      <br>
+
+      <%= f.submit "Update question", class: "btn btn-primary" %>
+    <% end %>
+
+    <%= link_to "Back to the question", question_path(@question) %>
+  </div>
+</div>
