@@ -1,8 +1,14 @@
 class QuizAnswersController < ApplicationController
   def create
     if answer_correct?
+      @user = current_user
+      @user.correct_answers_given += 1
+      @user.save
       render template: 'static_pages/correct'
     else
+      @user = current_user
+      @user.incorrect_answers_given += 1
+      @user.save
       @question = @answer.question
       render template: 'static_pages/incorrect'
     end
