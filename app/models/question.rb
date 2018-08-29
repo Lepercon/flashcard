@@ -1,5 +1,6 @@
 class Question < ApplicationRecord
   validates :text, length: { minimum: 3 }
+  has_many :correctly_answered_questions
   has_many :answers, dependent: :destroy
   validate :question_has_four_answers
   validate :question_has_only_one_correct_answer

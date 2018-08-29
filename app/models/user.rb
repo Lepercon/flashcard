@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :correctly_answered_questions
   attr_accessor :remember_token
   #Downcases email addresses
   before_save { email.downcase! }

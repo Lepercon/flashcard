@@ -4,6 +4,7 @@ class QuizAnswersController < ApplicationController
       @user = current_user
       @user.correct_answers_given += 1
       @user.save
+      @user.update_attribute(:correctly_answered_question, )
       render template: 'static_pages/correct'
     else
       @user = current_user

@@ -4,7 +4,9 @@ class QuizzesController < ApplicationController
   end
 
   def random
-    @question ||= Question.order("RANDOM()").first
+    @user = current_user
+    correctly_answered_questions_ids = @user.correctly_answered_questions.pluck(&:question_id)
+    @question ||= Question.where.not(id: correctly_answered_questions_ids).order("RANDOM()").first
     if !@question.answers.blank?
       render :show
     else
