@@ -11,8 +11,8 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   #Uses Rails built-in to create password digests, and validates passwords
   has_secure_password(validations: true)
-  validates :password, length: { minimum: 6 }, on: :create
-  validates :password, length: { minimum: 6 }, allow_blank: true, on: :update
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+ # validates :password, length: { minimum: 6 }, allow_blank: true, on: :update
 
 
   #Returns hash digest of given string

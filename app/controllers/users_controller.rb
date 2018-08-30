@@ -39,9 +39,6 @@ class UsersController < ApplicationController
     @user = User.where(id: params[:id]).first
     hash = user_params.reject { |k, v| v.blank?}
     @user.update(hash)
-
-
-
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully
