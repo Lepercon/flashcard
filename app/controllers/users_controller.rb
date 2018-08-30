@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      @user.update(correct_answers_given: 0, incorrect_answers_given: 0)
+      @user.update(correct_answers_given: 0, incorrect_answers_given: 0, is_admin: false)
       if logged_in?
         respond_to do |format|
           format.html { redirect_to users_path}
@@ -38,9 +38,9 @@ class UsersController < ApplicationController
   def update
     @user = User.where(id: params[:id]).first
     hash = user_params.reject { |k, v| v.blank?}
-    @user.update(hash) 
+    @user.update(hash)
 
-    
+
 
     respond_to do |format|
       if @user.update(user_params)
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:id, :name, :email, :password,
-      :password_confirmation)
+      :password_confirmation, :is_admin)
     end
 
 end

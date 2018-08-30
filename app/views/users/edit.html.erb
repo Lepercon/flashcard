@@ -23,6 +23,10 @@
 
             <%= f.label :password_confirmation, "Confirmation" %>
             <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+          <%- else %>
+            <%= f.label :is_admin, "Make this user an admin" %>
+            <%= f.check_box :is_admin %>
           <% end %>
           <%= f.submit "Update this user", class: "btn btn-primary" %>
         <% end %>
@@ -31,7 +35,7 @@
 
 
 
- 
+
 
 
   <%= link_to "Back to my profile", user_path(@user) if @user == current_user %>
