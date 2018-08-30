@@ -24,9 +24,11 @@
       </section>
     </aside>
   </div>
-  <%= link_to "Edit my profile", edit_user_path(@user) if @user ==current_user %><br>
-  <%= link_to "Edit this user", edit_user_path(@user) if (current_user.is_admin? && (!(@user == current_user))) %><br>
-  <%= link_to "All users", users_path if current_user.is_admin? %>
+  <div class="profile_links">
+    <%= link_to "Edit my profile", edit_user_path(@user) if @user ==current_user %><br>
+    <%= link_to "Edit this user", edit_user_path(@user) if (current_user.is_admin? && (!(@user == current_user))) %><br>
+    <%= link_to "All users", users_path if current_user.is_admin? %>
+  </div>
 <% else %>
   <h1>You must be logged in as an admin user to view this page</h1>
 <% end %>

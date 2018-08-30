@@ -20,4 +20,6 @@
 
 <% end %>
 
-<%= link_to "New question", new_question_path if (!current_user.nil? &&current_user.is_admin?) %>
+<div class="center">
+  <b><%= link_to "New question", new_question_path if (!current_user.nil? &&current_user.is_admin?) %></b>
+</div>
