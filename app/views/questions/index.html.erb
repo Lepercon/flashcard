@@ -9,12 +9,15 @@
       <%= link_to "Log in", login_path, class: "btn btn-lg btn-primary" %>
     <% end %>
   </div>
+  <div class="center">
+  <%= will_paginate %>
   <%- @questions.each do |q| %>
     <p><%= link_to "#{q.text}", question_path(q.id) if logged_in? %></p>
     <p><%= q.text if !logged_in? %></p>
   <% end %>
 
-
+  <%= will_paginate %>
+</div>
 <% else %>
   <h1> We haven't got any questions yet, they're coming soon!</h1>
 
