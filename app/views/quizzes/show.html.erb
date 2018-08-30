@@ -2,29 +2,35 @@
 
   <div class="center jumbotron">
     <%- if logged_in? %>
-      <h1><%= @question.text %></h1>
-      <br><br>
+
+      <%- if !@question.blank? %>
+        <h1><%= @question.text %></h1>
+        <br><br>
 
 
-      <%- if !@question.answers.blank? %>
-        <% @question.answers.each do |ans| %>
-          <%= form_for :given_answer, url: quiz_answers_path(@question), method: :post do |form| %>
+        <%- if !@question.answers.blank? %>
+          <% @question.answers.each do |ans| %>
+            <%= form_for :given_answer, url: quiz_answers_path(@question), method: :post do |form| %>
 
-            <div class="actions">
-              <%= form.hidden_field :answer_id, as: :hidden, value: ans.id %>
-              <%= form.submit ans.answertext, class: "btn btn-lg btn-primary" %>
-            </div><br>
+              <div class="actions">
+                <%= form.hidden_field :answer_id, as: :hidden, value: ans.id %>
+                <%= form.submit ans.answertext, class: "btn btn-lg btn-primary" %>
+              </div><br>
+            <% end %>
           <% end %>
+        <% else %>
+          <p>This question has no answers yet, they will be added soon!</p>
+          <%= link_to "Next question", random_quizzes_path %>
         <% end %>
       <% else %>
-        <p>This question has no answers yet, they will be added soon!</p>
-        <%= link_to "Next question", random_quizzes_path %>
+        <p> You have correctly answered every question! </p>
+        <%= link_to "Reset my questions!", correctly_answered_question_path(current_user.correctly_answered_questions.first), method: :delete, class: "btn btn-lg btn-primary" %><br><br>
+        <%= link_to "All questions", questions_path, class: "btn btn-lg btn-primary" %>
       <% end %>
 
 
 
       <br><br>
-      <p> If you've clicked next question and the same question appears, refresh the page, we're working on it!</p>
     <% else %> 
       <p> You must be logged in to access the quiz! </p>
       <%= link_to 'Sign up now to start quizzing!', signup_path, class: "btn btn-lg btn-primary" %><br><br><br>

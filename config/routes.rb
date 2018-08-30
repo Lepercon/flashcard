@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     end
   end
   resources :quiz_answers, only: :create
+  resources :correctly_answered_questions, only: :destroy
 
 
   resources :static_pages, only: :show

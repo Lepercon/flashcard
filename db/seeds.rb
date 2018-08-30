@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-user = User.create!(name: "example", email: "example@railstutorial.com", password: "example", password_confirmation: "example", is_admin: true)
+user = User.create!(name: "example", email: "example@railstutorial.com", password: "example", password_confirmation: "example", is_admin: true, correct_answers_given: 0, incorrect_answers_given: 0)
 
 question_1 = Question.create!(text: "What is OSINT?")
 
@@ -165,7 +165,7 @@ question_15 = Question.create!(text: "What is social engineering?")
 
 Answer.create!(answertext: "The engineering of a website to make it more user friendly, thus making the user less likely to accidentally download malware etc.",
 	correct: false, question_id: question_15.id)
-Answer.create!(answertext: "The act of finding publically available information and peicing it together to discover more private information.",
+Answer.create!(answertext: "The act of finding publically available information and piecing it together to discover more private information.",
 	correct: false, question_id: question_15.id)
 Answer.create!(answertext: "Manipulating people into carrying out specific actions, or divulging information, that's of use to an attacker.",
 	correct: true, question_id: question_15.id)
@@ -209,9 +209,9 @@ question_19 = Question.create!(text: "What is a download attack?")
 
 Answer.create!(answertext: "A method of unloading a large number of exploit attempts on a target.",
 	correct: false, question_id: question_19.id)
-Answer.create!(answertext: "The act of downloading publically available information and peicing it together to discover more private information.",
+Answer.create!(answertext: "The act of downloading publically available information and piecing it together to discover more private information.",
 	correct: false, question_id: question_19.id)
-Answer.create!(answertext: "An attack in chich software analyses information downloaded about a target to develop passwords that they may potentially use.",
+Answer.create!(answertext: "An attack in which software analyses information downloaded about a target to develop passwords that they may potentially use.",
 	correct: false, question_id: question_19.id)
 Answer.create!(answertext: "The unintentional installation of malicious software or virus onto a device without the users knowledge or consent. May also be known as a drive-by download.",
 	correct: true, question_id: question_19.id)
